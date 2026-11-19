@@ -1,0 +1,12 @@
+{
+  "name": "en-reader",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "外刊精读：导入英文文章，划词查词，生词本 + 间隔复习。纯静态，无依赖。",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "add": "node tools/import.mjs",
+    "test": "node tools/selftest.mjs"
+  }
+}

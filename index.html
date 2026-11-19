@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fbf8f1">
+<title>外刊精读 · 每天读一点真实的英语</title>
+<meta name="description" content="一个极简的外刊精读站：导入英文文章，划词查词，自动沉淀生词本，按间隔重复复习。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="外刊精读 · 每天读一点真实的英语">
+<meta property="og:description" content="导入外刊文章，点词即查、整句朗读、生词自动进入间隔复习。">
+<meta property="og:site_name" content="外刊精读">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232c5f4a'/%3E%3Ctext x='32' y='46' font-size='40' font-family='Georgia,serif' fill='%23fbf8f1' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  (function () {
+    try {
+      var p = JSON.parse(localStorage.getItem('er.prefs.v1') || '{}');
+      var t = p.theme || 'auto';
+      var dark = t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">外刊<span>精读</span></span>
+      <span class="brand-sub">Read · Look up · Remember</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" data-page="library">文章</a>
+      <a href="vocab.html" data-page="vocab">生词本<span class="due-dot" data-due-badge hidden>0</span></a>
+      <a href="import.html" data-page="import">导入</a>
+    </nav>
+    <button class="icon-btn" data-theme-toggle title="切换深浅色" aria-label="切换深浅色">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>
+        <circle cx="12" cy="12" r="3.6"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div class="hero-kicker">English · Extensive Reading</div>
+    <h1>把外刊读成<em>自己的</em>英语。</h1>
+    <p class="lead">
+      粘贴一篇你真正想读的文章，或者直接把 PDF 拖进来——点词即查、整句朗读、进度自动保存。
+      每一个查过的词都会进入生词本，按遗忘曲线安排复习——读得越多，词汇越扎实。
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="import.html">导入一篇文章</a>
+      <a class="btn" href="#library">浏览文章库</a>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <a class="resume" id="resume" hidden href="#">
+      <span class="resume-kicker">上次读到</span>
+      <span class="resume-title" id="resume-title"></span>
+      <span class="resume-pct" id="resume-pct"></span>
+      <span class="resume-cta">继续阅读</span>
+      <span class="resume-bar"><i id="resume-fill"></i></span>
+    </a>
+  </section>
+
+  <section class="wrap">
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="stat-num" id="st-articles">—</div>
+        <div class="stat-label">文章总数</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="st-read">—</div>
+        <div class="stat-label">已开始阅读</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="st-vocab">—</div>
+        <div class="stat-label">生词本</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="st-due">—</div>
+        <div class="stat-label">今日待复习</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="library">
+    <div class="section-head">
+      <h2>文章库</h2>
+      <span class="rule"></span>
+      <span class="count" id="lib-count"></span>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+        </svg>
+        <input type="search" id="search" placeholder="搜索标题、来源或标签…" autocomplete="off">
+      </div>
+      <select class="filter-select" id="level-filter" aria-label="难度筛选">
+        <option value="">全部难度</option>
+      </select>
+      <select class="filter-select" id="sort" aria-label="排序">
+        <option value="date">按日期</option>
+        <option value="title">按标题</option>
+        <option value="short">按篇幅（短→长）</option>
+      </select>
+    </div>
+
+    <div class="lib-list" id="lib-list">
+      <div class="empty">正在加载…</div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap site-foot">
+  <span>© <span data-year>2026</span> 外刊精读</span>
+  <span>·</span>
+  <span>纯静态站点，数据保存在你自己的浏览器里</span>
+  <span class="spacer"></span>
+  <a href="import.html">导入文章</a>
+  <a href="vocab.html">生词本</a>
+</footer>
+
+<script type="module" src="assets/library.js"></script>
+</body>
+</html>

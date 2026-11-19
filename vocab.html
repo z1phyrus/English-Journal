@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fbf8f1">
+<title>生词本 · 外刊精读</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232c5f4a'/%3E%3Ctext x='32' y='46' font-size='40' font-family='Georgia,serif' fill='%23fbf8f1' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  (function () {
+    try {
+      var p = JSON.parse(localStorage.getItem('er.prefs.v1') || '{}');
+      var t = p.theme || 'auto';
+      var dark = t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">外刊<span>精读</span></span>
+      <span class="brand-sub">Read · Look up · Remember</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" data-page="library">文章</a>
+      <a href="vocab.html" data-page="vocab">生词本<span class="due-dot" data-due-badge hidden>0</span></a>
+      <a href="import.html" data-page="import">导入</a>
+    </nav>
+    <button class="icon-btn" data-theme-toggle title="切换深浅色" aria-label="切换深浅色">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>
+        <circle cx="12" cy="12" r="3.6"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="page-head">
+    <h1>生词本</h1>
+    <p>在这里的每个词，都来自你真正读过的句子。复习时只判断「记不记得」，间隔由系统安排——忘了就提前再来，记得就越推越远。</p>
+  </section>
+
+  <section class="due-banner">
+    <div>
+      <div class="big" id="due-count">0</div>
+      <div class="txt">个词今天到期</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="txt" id="mini-stats">—</div>
+    <button class="btn btn-primary" id="start-review">开始复习</button>
+  </section>
+
+  <div class="toolbar">
+    <div class="search-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+      </svg>
+      <input type="search" id="vocab-search" placeholder="搜索单词或释义…" autocomplete="off">
+    </div>
+    <select class="filter-select" id="vocab-sort" aria-label="排序">
+      <option value="due">按复习时间</option>
+      <option value="added">按添加时间</option>
+      <option value="alpha">按字母</option>
+    </select>
+    <button class="btn btn-sm" id="export-vocab">导出备份</button>
+    <button class="btn btn-sm btn-ghost" id="clear-vocab">清空</button>
+  </div>
+
+  <div id="vocab-area">
+    <div class="empty">正在加载…</div>
+  </div>
+</main>
+
+<div class="review-overlay" id="review" role="dialog" aria-modal="true" aria-label="复习">
+  <div class="review-top">
+    <span class="review-progress" id="rv-progress"></span>
+    <span class="spacer"></span>
+    <span class="review-progress" id="rv-hint">空格 显示释义 · 1/2/3 评分</span>
+    <button class="btn btn-sm btn-ghost" id="rv-close">退出</button>
+  </div>
+  <div class="review-stage">
+    <div class="review-card" id="rv-card"></div>
+  </div>
+  <div class="review-actions" id="rv-actions"></div>
+</div>
+
+<footer class="wrap site-foot">
+  <span>© <span data-year>2026</span> 外刊精读</span>
+  <span>·</span>
+  <span>生词数据仅保存在本机浏览器</span>
+  <span class="spacer"></span>
+  <a href="index.html">回到文章库</a>
+</footer>
+
+<script type="module" src="assets/vocab.js"></script>
+</body>
+</html>

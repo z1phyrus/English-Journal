@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-19T05:00:00.000Z",
+  "articles": [
+    {
+      "id": "why-you-forget-the-words-you-learn",
+      "title": "Why You Forget the Words You Learn",
+      "subtitle": "Memory is not a bucket. It is a negotiation.",
+      "source": "示例文章 · Demo",
+      "author": "",
+      "date": "2026-11-12",
+      "level": "B2",
+      "tags": ["学习方法", "心理"],
+      "summary": "背了一晚上的单词，一周后像陌生人。这不是记性的问题，而是练习方式的问题。",
+      "paragraphs": [
+        "Every language learner knows the ritual. You spend an evening with a vocabulary list, repeating each word until it begins to feel familiar, and you go to bed quietly confident. A week later the word appears in the middle of an article and you stare at it like a stranger at a party. Nothing about this failure is unusual, and almost nothing about it is a fault in your memory.",
+        "The first culprit is the shape of the practice itself. Recognising a word on a list is a much easier task than retrieving it from the middle of a sentence, and the brain is ruthlessly economical about not storing what it can simply look at. Psychologists describe this as the gap between recognition and recall. A list trains the first and quietly leaves the second untouched, which is why the word feels familiar and remains useless.",
+        "The second culprit is context. A word learned on its own arrives without neighbours: no sentence to lean on, no argument to belong to, no image attached. When you meet it again in a real article, the surrounding words are doing work you never rehearsed. Memory prefers material that is connected to something. Isolated words are like books in a warehouse without a catalogue. They exist, but nobody can find them.",
+        "The third is what researchers call the spacing effect, and it may be the most useful idea in this essay. Two hours of study in a single evening feel more productive than twenty minutes spread across six days. They are not. The forgetting that happens between sessions is not a malfunction; it is part of the mechanism. Each time you drag a word back from the edge of forgetting, the path to it becomes a little more solid. Cramming removes the forgetting, and with it the exercise.",
+        "What actually works is less glamorous. Read things you would read anyway, in a language slightly harder than you find comfortable. When a word stops you, look it up, note the sentence it appeared in, and move on. Meet it again two days later, then a week later, then a month later, each time inside new company. Nobody enjoys this schedule, because it never produces the satisfying feeling of having finished. That feeling is precisely the thing to distrust.",
+        "So the next time a word slips away, treat it as information rather than a verdict. The forgetting tells you where the word lives, which connections are missing, and when to come back. A vocabulary is not a collection of objects to be owned once. It is a set of paths, and paths are kept open by walking them."
+      ],
+      "createdAt": "2026-11-19T05:00:00.000Z"
+    },
+    {
+      "id": "a-city-that-drinks-the-sky",
+      "title": "A City That Drinks the Sky",
+      "subtitle": "Singapore could not invent rain. It learned what to do with it.",
+      "source": "示例文章 · Demo",
+      "author": "",
+      "date": "2026-11-05",
+      "level": "C1",
+      "tags": ["环境", "城市"],
+      "summary": "一个几乎没有河流的小岛，如何把整座城市变成集水区，并让市民接受“从马桶到水龙头”的水。",
+      "paragraphs": [
+        "For most of the twentieth century, a city's water arrived by pipe from somewhere else: a river, a distant reservoir, a neighbour's goodwill. Singapore had almost none of these advantages. The island is small, crowded and short of rivers, and for decades it drew roughly half of its supply from Malaysia. The arrangement worked, but it turned the country's most basic need into a question of foreign policy.",
+        "So the city decided to harvest its own weather. Reservoirs were linked by canals, drains were widened into rivers, and building codes began to demand that new rooftops collect what fell on them. Today about two-thirds of the island's land surface drains into one of seventeen reservoirs. Rain that would once have rushed to the sea is now stopped, stored and treated. The city does not merely survive its tropical downpours; it drinks them.",
+        "The engineering is impressive, but the harder problem was cultural. Water in Singapore is priced to reflect what it costs to produce, which means households pay more than they once expected. Campaigns asked residents to turn off the tap while brushing their teeth, and for a while the message was everywhere: on posters, in classrooms, in the margins of schoolbooks. Critics called it propaganda. Officials called it maintenance of a habit that a wealthy society tends to forget.",
+        "The most controversial chapter came with NEWater, highly purified reclaimed water that is now mixed into the reservoirs. Early surveys found that people accepted the technology in principle and rejected it in practice. The government responded with an unusual piece of theatre: ministers drank bottles of it in public, and the brand was given a name that avoided the word sewage altogether. Today the plant produces a substantial share of national demand, and the debate has largely moved on.",
+        "None of this makes Singapore a model that can simply be copied. It is a wealthy city-state with a competent civil service, a small territory and an unusual willingness to plan decades ahead. But the underlying lesson travels further than the technology. A city cannot invent rain, yet it can decide what to do with the water it receives, how much to charge for it, and how honestly to talk about where it comes from.",
+        "The result is a place that treats water as infrastructure rather than scenery. Reservoirs double as parks where families jog on Sunday mornings, and the canals that once carried floods now carry kayaks. Scarcity did not disappear. It was converted into design, and then, slowly, into habit."
+      ],
+      "createdAt": "2026-11-19T05:00:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fbf8f1">
+<title>导入文章 · 外刊精读</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232c5f4a'/%3E%3Ctext x='32' y='46' font-size='40' font-family='Georgia,serif' fill='%23fbf8f1' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  (function () {
+    try {
+      var p = JSON.parse(localStorage.getItem('er.prefs.v1') || '{}');
+      var t = p.theme || 'auto';
+      var dark = t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">外刊<span>精读</span></span>
+      <span class="brand-sub">Read · Look up · Remember</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" data-page="library">文章</a>
+      <a href="vocab.html" data-page="vocab">生词本<span class="due-dot" data-due-badge hidden>0</span></a>
+      <a href="import.html" data-page="import">导入</a>
+    </nav>
+    <button class="icon-btn" data-theme-toggle title="切换深浅色" aria-label="切换深浅色">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4"/>
+        <circle cx="12" cy="12" r="3.6"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="page-head">
+    <h1>导入一篇外刊</h1>
+    <p>
+      把正文粘贴进来，或者直接把 <b>PDF / txt</b> 拖进下面的框里——PDF 会自动去掉页眉页脚和公众号引导语；
+      如果是带讲稿的讲义，每段的译文、单独讲过的词、文末翻译作业也会一起收好，在精读页里用。
+      文章先存在你的浏览器里（只有你看得见），随时可导出成 JSON 发布给所有人。
+    </p>
+  </section>
+
+  <section style="padding:2.2rem 0">
+    <div class="form-grid">
+      <div class="field">
+        <label for="f-body">正文 <span id="word-count" style="color:var(--ink-3)">0 词</span></label>
+        <textarea id="f-body" placeholder="Paste the article text here.
+
+Leave a blank line between paragraphs. Line breaks inside a paragraph will be joined automatically."></textarea>
+        <div class="hint">支持拖入 .pdf / .txt / .md，或点下面的「选择文件」。PDF 解析结果会直接填进下面的表单，可以再改。</div>
+        <div class="pdf-status" id="pdf-status" hidden></div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label for="f-title">标题</label>
+          <input id="f-title" placeholder="留空则自动取正文第一句">
+        </div>
+        <div class="field">
+          <label for="f-subtitle">副标题 / 导语（可选）</label>
+          <input id="f-subtitle" placeholder="Memory is not a bucket.">
+        </div>
+      </div>
+
+      <div class="row-3">
+        <div class="field">
+          <label for="f-source">来源</label>
+          <input id="f-source" placeholder="The Economist / 卫报 …">
+        </div>
+        <div class="field">
+          <label for="f-date">日期</label>
+          <input id="f-date" type="date">
+        </div>
+        <div class="field">
+          <label for="f-level">难度</label>
+          <select id="f-level">
+            <option value="">未标注</option>
+            <option>A2</option><option>B1</option>
+            <option selected>B2</option>
+            <option>C1</option><option>C2</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label for="f-tags">标签（用逗号分隔）</label>
+          <input id="f-tags" placeholder="科技, 社会">
+        </div>
+        <div class="field">
+          <label for="f-summary">中文摘要（可选，显示在文章开头）</label>
+          <input id="f-summary" placeholder="一句话说清这篇文章讲了什么">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" id="save">保存并开始阅读</button>
+        <button class="btn" id="preview">预览分段</button>
+        <label class="btn" style="cursor:pointer">
+          选择文件
+          <input id="f-file" type="file" accept=".pdf,.txt,.md,.markdown,application/pdf,text/plain" hidden>
+        </label>
+        <button class="btn btn-ghost" id="reset">清空表单</button>
+      </div>
+    </div>
+
+    <div class="preview-pane" id="preview-pane" hidden></div>
+  </section>
+
+  <section style="padding-bottom:3rem">
+    <div class="section-head" style="margin-top:0">
+      <h2>本机导入的文章</h2>
+      <span class="rule"></span>
+      <button class="btn btn-sm" id="export-local">导出全部 JSON</button>
+    </div>
+    <div id="local-list" class="lib-list"></div>
+  </section>
+</main>
+
+<footer class="wrap site-foot">
+  <span>© <span data-year>2026</span> 外刊精读</span>
+  <span>·</span>
+  <span>导入的原文请仅用于个人学习</span>
+  <span class="spacer"></span>
+  <a href="index.html">回到文章库</a>
+</footer>
+
+<script type="module" src="assets/importer.js"></script>
+<div class="drop-veil" id="drop-veil" hidden>
+  <div class="drop-veil-card">
+    <span class="drop-veil-title">松手即可导入</span>
+    <span class="drop-veil-sub" id="drop-veil-sub">PDF 会自动去掉页眉页脚、词汇注释和译文</span>
+  </div>
+</div>
+</body>
+</html>
