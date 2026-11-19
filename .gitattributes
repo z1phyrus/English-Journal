@@ -1,9 +1,6 @@
-* text=auto
-*.html text eol=lf
-*.css  text eol=lf
-*.js   text eol=lf
-*.mjs  text eol=lf
-*.json text eol=lf
-*.md   text eol=lf
-*.png  binary
-*.jpg  binary
+# 统一用 LF：这台机器的 core.autocrlf=true 会把它改回 CRLF，这里强制覆盖
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.pdf binary
